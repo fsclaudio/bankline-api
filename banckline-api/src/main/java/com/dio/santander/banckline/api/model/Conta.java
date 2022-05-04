@@ -2,11 +2,8 @@ package com.dio.santander.banckline.api.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "tab_conta")
+
 @Embeddable
 public class Conta {
 	
