@@ -2,6 +2,7 @@ package com.dio.santander.banckline.api.service;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +39,15 @@ public class MovimentacaoService {
 			correntista.save(corrent);
 		}
 		repository.save(movementacao);
+	}
+	
+	public NovaMovimentacaoDTO findById(Long id) throws Exception {
+		Movimentacao cliente = repository.findById(id)
+				.orElseThrow(() -> new Exception ("Id not found " + id));
+		
+		NovaMovimentacaoDTO novo = new NovaMovimentacaoDTO();
+		BeanUtils.copyProperties(cliente, novo);
+		return novo;
 	}
 
 }

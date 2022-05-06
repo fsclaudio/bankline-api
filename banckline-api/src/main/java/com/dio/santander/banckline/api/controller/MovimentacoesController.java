@@ -3,7 +3,9 @@ package com.dio.santander.banckline.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,14 @@ public class MovimentacoesController {
 	@GetMapping
 	public List<Movimentacao> findAll(){
 		return repository.findAll();
+	}
+	
+	@GetMapping(value = "{id}")
+	public ResponseEntity<NovaMovimentacaoDTO> findById(@PathVariable Long id) throws Exception{
+		
+	  NovaMovimentacaoDTO saved =	service.findById(id);
+	  
+	  return ResponseEntity.ok(saved);
 	}
 	
 	@PostMapping
