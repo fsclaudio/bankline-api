@@ -2,12 +2,15 @@ package com.dio.santander.banckline.api.dto;
 
 import com.dio.santander.banckline.api.model.MovimentacaoTipo;
 
+
+
 public class NovaMovimentacaoDTO {
 	
 	private String descricao;
 	private Double valor;
 	private MovimentacaoTipo tipo;
 	private Long idConta;
+	
 	
 	public String getDescricao() {
 		return descricao;
